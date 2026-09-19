@@ -90,8 +90,16 @@ A aplicação abre em `http://localhost:8501`.
 
 ## Capturas de tela
 
-> **TODO:** adicionar GIF/telas em `assets/` e referenciá-los aqui
-> (ex.: `![descritiva](assets/descritiva.png)`).
+Figuras geradas pela própria aplicação (`scripts/gerar_graficos.py` reproduz cada
+aba e exporta as imagens):
+
+![Módulo 2 — histograma](assets/m2_histograma_altura.png)
+![Módulo 2 — boxplot](assets/m2_boxplot_peso.png)
+![Módulo 2 — categórica](assets/m2_categorica_barras.png)
+![Módulo 3 — Lei dos Grandes Números](assets/m3_lgn.png)
+![Módulo 3 — TCL](assets/m3_tcl.png)
+![Módulo 4 — distribuições teóricas](assets/m4_distribuicoes.png)
+![Módulo 5 — regressão linear](assets/m5_regressao.png)
 
 ## Reproduzindo a validação do núcleo
 
