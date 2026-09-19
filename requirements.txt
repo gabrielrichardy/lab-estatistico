@@ -5,3 +5,5 @@ scipy
 plotly
 pytest
 kagglehub
+kaleido
+fpdf2

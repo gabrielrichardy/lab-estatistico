@@ -76,6 +76,11 @@ Todas as medidas em `nucleo/minhastats.py` foram escritas manualmente (sem `stat
 
 **Comando:** `pytest testes/ -v` → **44 testes passando.**
 
+```text
+............................................                             [100%]
+44 passed in 2.27s
+```
+
 | Medida própria | Referência | Tolerância |
 |---|---|---|
 | `media` | `np.mean` | rtol 1e-10 |
@@ -89,18 +94,67 @@ Todas as medidas em `nucleo/minhastats.py` foram escritas manualmente (sem `stat
 | `pdf_normal/exponencial/uniforme`, `pmf_poisson/binomial` | `scipy.stats` | rtol 1e-10 |
 | `regressao_linear` (α, β, r) | `np.polyfit`, `scipy.stats.linregress` | rtol 1e-6 |
 
-*TODO: colocar aqui o print do `pytest` executado.*
+*TODO: (opcional) colar aqui a saída completa do `pytest -v` no seu ambiente.*
 
 ---
 
 ## 4. Cada módulo (prints + explicação)
 
-*TODO: para cada módulo, incluir uma imagem da aba rodando e 2–3 frases sobre o que o usuário vê.*
+### Módulo 2 — Estatística Descritiva Interativa
 
-- **Módulo 2 — Descritiva:** *(print + explicação)*
-- **Módulo 3 — Simulação:** *(print + explicação)*
-- **Módulo 4 — Distribuições:** *(print + explicação)*
-- **Módulo 5 — Regressão:** *(print + explicação)*
+A aba recebe uma variável. Para variáveis contínuas gera tabela de frequências com classes
+(regra de Sturges: k = ⌈log₂ n⌉ + 1), painel com todas as medidas calculadas pela biblioteca
+própria, histograma e boxplot, detecção de outliers pela regra do IQR e interpretação automática.
+
+![Histograma de height_cm](assets/m2_histograma_altura.png)
+
+Exemplo: `height_cm` tem média ≈ 168,6 cm, desvio ≈ 8,4 cm, CV = 5,00% e **10 outliers** pela
+regra do IQR. A média praticamente coincide com a mediana (169,2 cm) → distribuição aproximadamente simétrica.
+
+![Boxplot de weight_kg](assets/m2_boxplot_peso.png)
+
+À esquerda, a mesma visão para `weight_kg`: 83 outliers acima de Q3 + 1,5·IQR. Para categóricas, a aba exibe
+tabela + barras/pizza:
+
+![Distribuição da classe](assets/m2_categorica_barras.png)
+
+### Módulo 3 — Probabilidade e Simulação (Monte Carlo)
+
+**Lei dos Grandes Números:** o usuário controla o nº de lançamentos do dado (p = 1/6) ou moeda
+(p = 1/2); a frequência relativa acumulada converge para o valor teórico.
+
+![LGN](assets/m3_lgn.png)
+
+Após 100.000 lançamentos a frequência relativa de "sair 6" fica em ~0,167 (esperado 0,1667) —
+convergência numérica do LGN.
+
+**Teorema Central do Limite:** o usuário sorteia R amostras de tamanho n de uma variável do dataset
+e observa a distribuição das médias amostrais, comparada com a Normal N(μ, σ²/n).
+
+![TCL](assets/m3_tcl.png)
+
+Com n = 30 e 5.000 repetições sobre `systolic`, a média das médias (≈130,24) iguala a média
+populacional e o desvio das médias (≈2,3) aproxima σ/√30 — ou seja, a convergência descrita pelo TCL.
+
+### Módulo 4 — Distribuições Teóricas
+
+Histograma em densidade + curva(s) com parâmetros estimados dos próprios dados:
+
+![Distribuições sobre o peso](assets/m4_distribuicoes.png)
+
+Em `weight_kg`, a curva **Normal**(μ̂ = 67,45; σ̂ = 11,95) acompanha bem o pico; a **Exponencial**
+(λ̂ = 1/67,45) perde o ajuste porque os dados não decaem monotonamente a partir de zero — a
+inspeção visual mostra qual modelo descreve melhor a variável.
+
+### Módulo 5 — Correlação e Regressão Linear
+
+Dispersão, reta de mínimos quadrados (implementada na mão), equação, R² e predição interativa:
+
+![Regressão height × weight](assets/m5_regressao.png)
+
+Para `height_cm × weight_kg`: ŷ = −86,58 + 0,91·x, r = 0,7349 e R² = 0,5401 — cerca de 54% da
+variação do peso é explicada linearmente pela altura. O campo de predição retorna ŷ para um X digitado
+(a estrela dourada marca a predição para X = mediana).
 
 ---
 
@@ -124,7 +178,15 @@ Valores gerados pela biblioteca própria; reproduzir na aplicação.
 
 ## 6. Limitações
 
-*TODO: 1 parágrafo honesto (não deixa a análise concluir o que não deve — ex.: o dataset é cross-sectional, não mede causação; classe A–D é rótulo agregado; ausência de variáveis socioeconômicas; etc.).*
+Os dados do Body Performance Data são **transversais** (cross-sectional): capturam um retrato de
+cada pessoa em um instante, não acompanham ninguém ao longo do tempo. Por isso as correlações e
+regressões aqui apresentadas não permitem afirmar causalidade — "altura explica parte do peso" não
+significa "aumentar a altura aumenta o peso". Além disso, a regressão é linear simples: não mede
+efeitos conjuntos (ex.: altura, idade e gênero juntos) nem não-linearidades. A classe A–D é um
+rótulo agregado fornecido pelo dataset, sem metodologia documentada de como foi derivada, e a
+amostra pode não representar a população brasileira (não há variáveis socioeconômicas). Por fim, as
+medidas de simulação utilizam sementes fixas para reprodutibilidade, mas trocar a semente produz
+variações amostrais pequenas — o fenômeno estatístico descrito permanece o mesmo.
 
 ---
 
