@@ -133,8 +133,9 @@ e observa a distribuição das médias amostrais, comparada com a Normal N(μ, �
 
 ![TCL](assets/m3_tcl.png)
 
-Com n = 30 e 5.000 repetições sobre `systolic`, a média das médias (≈130,24) iguala a média
-populacional e o desvio das médias (≈2,3) aproxima σ/√30 — ou seja, a convergência descrita pelo TCL.
+Com n = 30 e 5.000 repetições sobre `systolic`, a média das médias (≈130,19) iguala a média
+populacional (130,24) e o desvio das médias (≈2,72) aproxima σ/√30 (≈2,69) — ou seja, a
+convergência descrita pelo TCL.
 
 ### Módulo 4 — Distribuições Teóricas
 
@@ -152,8 +153,9 @@ Dispersão, reta de mínimos quadrados (implementada na mão), equação, R² e 
 
 ![Regressão height × weight](assets/m5_regressao.png)
 
-Para `height_cm × weight_kg`: ŷ = −86,58 + 0,91·x, r = 0,7349 e R² = 0,5401 — cerca de 54% da
-variação do peso é explicada linearmente pela altura. O campo de predição retorna ŷ para um X digitado
+Para `height_cm × weight_kg`: ŷ = −108,22 + 1,04·x, r = 0,7349 e R² = 0,5401 — a cada 1 cm
+a mais de altura, o peso aumenta em média ~1,04 kg; cerca de 54% da variação do peso é explicada
+linearmente pela altura. O campo de predição retorna ŷ para um X digitado
 (a estrela dourada marca a predição para X = mediana).
 
 ---

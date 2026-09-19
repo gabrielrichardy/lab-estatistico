@@ -72,17 +72,17 @@ class Pdf(FPDF):
         # 1. Identificacao ---------------------------------------------------
         self.cabecalho_secao("1. Identificacao")
         self.set_font("Arial", "B", 11)
-        self.cell(0, 7, "Nome do grupo: (SUBSTITUIR)", new_x="LMARGIN", new_y="NEXT")
+        self.cell(0, 7, "Nome do grupo: trabalho individual - Gabriel Richardy",
+                  new_x="LMARGIN", new_y="NEXT")
         self.set_font("Arial", "", 10)
         self.set_font("Arial", "B", 10)
         self.cell(10, 7, "N", border=1, align="C")
         self.cell(110, 7, "Nome completo", border=1)
         self.cell(0, 7, "Matricula", border=1, align="C", new_x="LMARGIN", new_y="NEXT")
         self.set_font("Arial", "", 10)
-        for i in range(5):
-            self.cell(10, 7, str(i + 1), border=1, align="C")
-            self.cell(110, 7, "(SUBSTITUIR)", border=1)
-            self.cell(0, 7, "(SUBSTITUIR)", border=1, align="C", new_x="LMARGIN", new_y="NEXT")
+        self.cell(10, 7, "1", border=1, align="C")
+        self.cell(110, 7, "Gabriel Richardy", border=1)
+        self.cell(0, 7, "(SUBSTITUIR matricula)", border=1, align="C", new_x="LMARGIN", new_y="NEXT")
         self.ln(3)
 
         # 2. Link dos dados crus ----------------------------------------------
@@ -106,7 +106,7 @@ class Pdf(FPDF):
         self.set_font("Arial", "I", 10)
         self.set_text_color(0, 0, 200)
         self.set_x(self.l_margin)
-        self.multi_cell(0, 6, "https://github.com/SUBSTITUIR/lab-estatistico")
+        self.multi_cell(0, 6, "https://github.com/gabrielrichardy/lab-estatistico")
         self.set_text_color(0, 0, 0)
 
         # 4. Link do video -------------------------------------------------------
@@ -118,7 +118,7 @@ class Pdf(FPDF):
         self.set_font("Arial", "I", 10)
         self.set_text_color(0, 0, 200)
         self.set_x(self.l_margin)
-        self.multi_cell(0, 6, "https://youtu.be/SUBSTITUIR")
+        self.multi_cell(0, 6, "https://youtu.be/COLE_AQUI_O_LINK_DO_VIDEO")
         self.set_text_color(0, 0, 0)
 
         # 5. Resumo executivo ------------------------------------------------------
