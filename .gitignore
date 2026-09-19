@@ -1,0 +1,18 @@
+# Ambiente Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Ferramentas
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/

@@ -1,0 +1,1 @@
+"""Aplicacao Streamlit — Laboratorio Estatistico Interativo."""
