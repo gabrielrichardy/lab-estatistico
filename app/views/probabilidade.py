@@ -41,8 +41,9 @@ def _view_lgn():
                       xaxis_title="Lançamentos", yaxis_title="Frequência relativa")
     st.plotly_chart(fig, width="stretch")
 
+    n_txt = f"{n:,}".replace(",", ".")
     st.success(
-        f"Após **{n:,} lançamentos**, a frequência relativa foi "
+        f"Após **{n_txt}** lançamentos, a frequência relativa foi "
         f"**{resumo['frequencia_relativa_final']:.4f}**, contra o valor teórico "
         f"{resumo['esperado']:.4f} (diferença de {resumo['diferenca']:.4f}). "
         "Nenhuma sequência curta garante o valor teórico — o LGN só vale "
@@ -69,7 +70,8 @@ def _view_tcl(df: pd.DataFrame):
 
     fig = px.histogram(mus, nbins=30,
                        labels={"value": "média amostral", "count": "frequência"})
-    fig.update_layout(title=f"Distribuição das médias de {r:,} amostras (n = {n})",
+    r_txt = f"{r:,}".replace(",", ".")
+    fig.update_layout(title=f"Distribuição das médias de {r_txt} amostras (n = {n})",
                       showlegend=False)
 
     # Normal teórica do TCL sobreposta: N(mu_pop, sigma_pop^2 / n)

@@ -36,8 +36,9 @@ def main():
     df = carregar_dados(CAMINHO_CSV)
 
     st.sidebar.title("🧮 Laboratório Estatístico")
+    n_registros = f"{df.shape[0]:,}".replace(",", ".")
     st.sidebar.caption(
-        f"Body Performance Data — {df.shape[0]:,} registros, "
+        f"Body Performance Data — {n_registros} registros, "
         f"{df.shape[1]} variáveis (dataset real: Kaggle)."
     )
 
@@ -60,7 +61,7 @@ def main():
             laboratório estatístico e o valida contra NumPy/SciPy
             (tolerância 1e-10), tudo dentro de uma interface Streamlit.
 
-            **Dataset:** Body Performance Data — {df.shape[0]:,} registros
+            **Dataset:** Body Performance Data — {n_registros} registros
             sobre desempenho físico, com {df.shape[1]} variáveis.
 
             **Módulos:**

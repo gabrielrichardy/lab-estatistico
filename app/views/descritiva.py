@@ -72,7 +72,7 @@ def _painel_medidas(r: dict):
     c3.metric("CV (%)", f"{r['coeficiente_variacao']:.4g}")
     c3.metric("Q1 / Q3", f"{r['Q1']:.4g} / {r['Q3']:.4g}")
     c4.metric("IQR", f"{r['IQR']:.4g}")
-    c4.metric("n", f"{r['n']:,}")
+    c4.metric("n", f"{r['n']:,}".replace(",", "."))
     c4.metric("Outliers (IQR)", f"{r['n_outliers']}")
 
 
@@ -96,7 +96,8 @@ def render(df: pd.DataFrame):
         fig_p = px.pie(names=[t["categoria"] for t in tab],
                        values=[t["frequencia"] for t in tab], hole=0.4)
         col2.plotly_chart(fig_p, width="stretch")
-        max_txt = f"A categoria com maior frequência é **{tab[0]['categoria']}**, com {tab[0]['frequencia']:,} registros ({tab[0]['frequencia_relativa_%']:.1f}%)."
+        freq_txt = f"{tab[0]['frequencia']:,}".replace(",", ".")
+        max_txt = f"A categoria com maior frequência é **{tab[0]['categoria']}**, com {freq_txt} registros ({tab[0]['frequencia_relativa_%']:.1f}%)."
         st.info(max_txt)
         return
 
